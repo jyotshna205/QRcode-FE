@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { MatSelectionList } from '@angular/material/list';
+
+const ALLOWED_IMAGE_TYPES = ['image/png', 'image/jpeg'];
 
 @Component({
   selector: 'app-root',
@@ -41,6 +42,10 @@ export class AppComponent implements OnInit {
     const file = event && event.item(0);
 
     if (file) {
+      if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+        alert('Only JPG & PNG Images are allowed');
+        return;
+      }
       this.fileName = file.name;
       const formData = new FormData();
       formData.append('file', file);
