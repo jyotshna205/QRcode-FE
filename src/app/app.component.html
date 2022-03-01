@@ -7,8 +7,73 @@
   </mat-toolbar>
   <div class="wrapper">
     <div class="list-container">
+      <mat-card>
+
+        <mat-card-title-group style="padding: 0 8px">
+          <mat-card-title style="margin-top: 8px;">Previous Scans</mat-card-title>
+          <div>
+            <button *ngIf="selectedOptions?.[0]" mat-icon-button color="primary" class="upload-btn"
+              (click)="clearSelection()">
+              <mat-icon>clear</mat-icon>
+            </button>
+            <button *ngIf="selectedOptions?.[0]" mat-icon-button color="primary" class="upload-btn"
+              (click)="deleteQR()">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </mat-card-title-group>
+        <mat-card-content style="min-height: 80.5vh;">
+          <mat-divider></mat-divider>
+          <mat-selection-list #list [(ngModel)]="selectedOptions" [compareWith]="compareFunction" [multiple]="false">
+            <mat-list-option *ngFor="let data of scanData" [value]="data" (click)="getQRImage(data.id)"
+              style="padding: 0;">
+              <div mat-line>{{data.originalFilename}}</div>
+              <div mat-line> {{data.time | date:'short'	}} </div>
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-card-content>
+      </mat-card>
     </div>
     <div class="view-container">
+      <ng-container *ngIf="selectedOptions?.[0];else showUpload">
+        <mat-card>
+          <mat-card-title-group style="margin-top: 12px;">
+            <mat-card-title>QR Details</mat-card-title>
+          </mat-card-title-group>
+          <mat-divider></mat-divider>
+          <mat-card-content style="min-height: 78vh;" style="display: flex;">
+            <div class="img-container">
+              <img [src]="imageToShow" alt="image">
+            </div>
+            <mat-list style="flex: 1;">
+              <mat-list-item> <b>File Name:&nbsp;</b>{{selectedOptions[0].originalFilename}}
+              </mat-list-item>
+              <mat-list-item> <b>Upload Time:&nbsp;</b>{{selectedOptions[0].time | date : 'short'	}}
+              </mat-list-item>
+              <mat-list-item> <b>Data:&nbsp;</b>{{selectedOptions[0].fileData}}
+              </mat-list-item>
+            </mat-list>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
+      <ng-template #showUpload>
+        <mat-card>
+          <mat-card-title-group style="margin-top: 8px;">
+            <mat-card-title>Scan for QR</mat-card-title>
+          </mat-card-title-group>
+          <mat-divider></mat-divider>
+          <mat-card-subtitle style="margin-top: 24px;">Upload a QR Code or Scan using the device camera.
+          </mat-card-subtitle>
+          <mat-card-content class="file-upload-card">
+            <input hidden type="file" class="file-input" #fileUpload>
+            <div class="file-upload">
+              <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                <mat-icon>attach_file</mat-icon>
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-template>
     </div>
   </div>
 </div>

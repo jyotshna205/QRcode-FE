@@ -1,0 +1,23 @@
+.file-upload-card {
+  min-height: 72.5vh;
+  justify-content: end;
+  display: flex;
+  align-items: end;
+}
+
+.file-upload {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.img-container {
+  height: 350px;
+  width: 350px;
+  flex: 1;
+}
+
+.img-container img {
+  height: 100%;
+  width: 100%;
+}
