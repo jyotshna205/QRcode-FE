@@ -11,7 +11,7 @@ Install Node.js and then the development tools.Node.js comes with a package mana
 
 ##Run the below commands to check the Node and NPM Versions
  ```
-  npm --version && npm --version
+  node --version && npm --version
   ```
 
 ## Development server
