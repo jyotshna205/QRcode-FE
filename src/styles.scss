@@ -1,26 +1,22 @@
-html,
-body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.wrapper {
-  color: #000000de;
-  font-weight: 400;
-  padding: 16px;
+.app-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.container {
+.wrapper {
   display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: flex-start;
+  min-height: calc(100vh - 64px);
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
 }
 
 .list-container {
