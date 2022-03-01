@@ -1,4 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.app-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  min-height: calc(99vh - 64px);
+  margin: 0.5vh 0;
+  align-items: flex-start;
+  justify-content: center;
+  font-weight: 400;
+}
+
+.list-container {
+  display: flex;
+  flex: .5;
+  flex-direction: column;
+  padding: 0 12px;
+}
+
+.view-container {
+  display: flex;
+  flex: 1.5;
+  flex-direction: column;
+  padding: 0 12px;
+}
